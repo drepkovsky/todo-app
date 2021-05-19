@@ -1,3 +1,5 @@
+# EDIT: run "npm i" in root to fetch node_modules
+
 # Vanilla JavaScript Test
 
 ## Goal
