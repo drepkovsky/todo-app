@@ -1,0 +1,115 @@
+.input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.input-group input:first-child {
+  -ms-flex-preferred-size: 65%;
+      flex-basis: 65%;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  max-width: 65%;
+}
+
+.input-group input {
+  border-left: 1px solid #999;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  max-width: 25%;
+}
+
+.input-group input:focus {
+  border-left: none;
+}
+
+.input-group button {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  max-width: 10%;
+}
+
+.view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.category-label {
+  font-size: 1rem;
+  color: #868686;
+}
+
+.category-list {
+  list-style: none;
+  padding-inline: 16px;
+}
+
+.add {
+  background-color: #b83f45;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.add:hover {
+  -webkit-box-shadow: 0 0 2px 2px #cf7d7d;
+          box-shadow: 0 0 2px 2px #cf7d7d;
+}
+
+.add:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.add:active {
+  -webkit-box-shadow: 0 0 1px 1px #bd6c6c;
+          box-shadow: 0 0 1px 1px #bd6c6c;
+}
+
+.category {
+  height: 65px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  -webkit-box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+          box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  color: inherit;
+  padding: 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.category:focus {
+  -webkit-box-shadow: 0 0 2px 2px #cf7d7d;
+          box-shadow: 0 0 2px 2px #cf7d7d;
+  outline: 0;
+}
+/*# sourceMappingURL=index.css.map */
