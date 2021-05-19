@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "dev": "nodemon ./server.js -e .js,html,css"
+  },
   "dependencies": {
     "express": "^4.17.0",
     "morgan": "^1.9.1",
@@ -7,6 +10,7 @@
     "todomvc-common": "^1.0.1"
   },
   "devDependencies": {
-    "jasmine-core": "^2.0.0"
+    "jasmine-core": "^2.0.0",
+    "nodemon": "^2.0.7"
   }
 }

@@ -13,7 +13,7 @@ As a user I would like to categorize tasks when creating them. Since every user 
 
 ### Acceptance criteria
 
-1. Next to `What needs to be done?` field should be text input field `Category`
+1. Next to `What needs to be done?` field should be text input field `Category` 
 2. When blur event is happening on `What needs to be done?` task should not be created
 3. Task creation should happen only when both input fields are fulfilled
 4. In the list of existing tasks categories should be shown as labels
