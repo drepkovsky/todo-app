@@ -30,6 +30,7 @@
    * @constructor
    */
   function Template() {
+    // wrapper template, different for each of our templates
     this.templateWrapper =
       '<ul class="{{wrapperClass}}">' + "{{items}}" + "</ul>";
 
@@ -57,6 +58,7 @@
    *
    * @param {object} data The object containing keys you want to find in the
    *                      template to replace.
+   * @param {boolean} showCategory whether to show category of each item
    * @returns {string} HTML String of an <li> element
    *
    * @example
@@ -98,6 +100,14 @@
     return view;
   };
 
+  /**
+   *
+   * Fills HTML template for categorized todos view
+   *
+   * @param {object} data The categorized todos objects to be drawn
+   * @returns {string} HTML String of an <li> element
+   * @returns
+   */
   Template.prototype.showCategories = function (data) {
     let view = "";
 
