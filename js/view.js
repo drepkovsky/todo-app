@@ -18,7 +18,7 @@
     this.ENTER_KEY = 13;
     this.ESCAPE_KEY = 27;
 
-    this.$todoList = qs(".todo-list");
+    this.$todos = qs(".todos");
     this.$todoItemCounter = qs(".todo-count");
     this.$clearCompleted = qs(".clear-completed");
     this.$main = qs(".main");
@@ -26,13 +26,14 @@
     this.$toggleAll = qs(".toggle-all");
     this.$newTodo = qs(".new-todo");
     this.$category = qs(".category");
+    this.$add = qs(".add");
   }
 
   View.prototype._removeItem = function (id) {
     var elem = qs('[data-id="' + id + '"]');
 
     if (elem) {
-      this.$todoList.removeChild(elem);
+      elem.remove();
     }
   };
 
@@ -89,7 +90,7 @@
 
     listItem.className = listItem.className.replace("editing", "");
 
-    qsa("label", listItem).forEach(function (label) {
+    qsa("label.title-label", listItem).forEach(function (label) {
       label.textContent = title;
     });
   };
@@ -98,7 +99,10 @@
     var self = this;
     var viewCommands = {
       showEntries: function () {
-        self.$todoList.innerHTML = self.template.show(parameter);
+        self.$todos.innerHTML = self.template.show(parameter);
+      },
+      showEntriesCategory: function () {
+        self.$todos.innerHTML = self.template.showCategories(parameter);
       },
       removeItem: function () {
         self._removeItem(parameter);
@@ -121,6 +125,7 @@
       },
       clearNewTodo: function () {
         self.$newTodo.value = "";
+        self.$category.value = "";
       },
       elementComplete: function () {
         self._elementComplete(parameter.id, parameter.completed);
@@ -143,7 +148,7 @@
 
   View.prototype._bindItemEditDone = function (handler) {
     var self = this;
-    $delegate(self.$todoList, "li .edit", "blur", function () {
+    $delegate(self.$todos, "li .edit", "blur", function () {
       if (!this.dataset.iscanceled) {
         handler({
           id: self._itemId(this),
@@ -152,7 +157,7 @@
       }
     });
 
-    $delegate(self.$todoList, "li .edit", "keypress", function (event) {
+    $delegate(self.$todos, "li .edit", "keypress", function (event) {
       if (event.keyCode === self.ENTER_KEY) {
         // Remove the cursor from the input when you hit enter just like if it
         // were a real form
@@ -163,7 +168,7 @@
 
   View.prototype._bindItemEditCancel = function (handler) {
     var self = this;
-    $delegate(self.$todoList, "li .edit", "keyup", function (event) {
+    $delegate(self.$todos, "li .edit", "keyup", function (event) {
       if (event.keyCode === self.ESCAPE_KEY) {
         this.dataset.iscanceled = true;
         this.blur();
@@ -176,8 +181,12 @@
   View.prototype.bind = function (event, handler) {
     var self = this;
     if (event === "newTodo") {
-      $on(self.$newTodo, "change", function () {
-        handler(self.$newTodo.value);
+      $on(self.$add, "click", function () {
+        if (self.$newTodo.value && self.$category.value)
+          handler({
+            title: self.$newTodo.value,
+            category: self.$category.value,
+          });
       });
     } else if (event === "removeCompleted") {
       $on(self.$clearCompleted, "click", function () {
@@ -188,15 +197,15 @@
         handler({ completed: this.checked });
       });
     } else if (event === "itemEdit") {
-      $delegate(self.$todoList, "li label", "dblclick", function () {
+      $delegate(self.$todos, "li label", "dblclick", function () {
         handler({ id: self._itemId(this) });
       });
     } else if (event === "itemRemove") {
-      $delegate(self.$todoList, ".destroy", "click", function () {
+      $delegate(self.$todos, ".destroy", "click", function () {
         handler({ id: self._itemId(this) });
       });
     } else if (event === "itemToggle") {
-      $delegate(self.$todoList, ".toggle", "click", function () {
+      $delegate(self.$todos, ".toggle", "click", function () {
         handler({
           id: self._itemId(this),
           completed: this.checked,
