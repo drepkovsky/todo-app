@@ -1,4 +1,5 @@
 # EDIT: run "npm i" in root to fetch node_modules
+[Changes](changes.md)
 
 # Vanilla JavaScript Test
 
