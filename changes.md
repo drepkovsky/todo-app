@@ -11,3 +11,6 @@
 9. Added controller function for categories view filter
 10. Added template for categorizied todos listen
 11. Changed "new todo" tests so they would not crash because of the alteration of "new todo" methods
+
+
+Nodemon and "run dev" script were added for easier development
